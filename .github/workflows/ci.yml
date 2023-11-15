@@ -23,8 +23,8 @@ jobs:
       uses: sunnysid3up/python-linter@master
       with:
         mypy-options: "--ignore-missing-imports --show-error-codes"
-        pylint-options: "--rcfile=setup.cfg"
-        isort-options: "-w 100"
+        # pylint-options: "--rcfile=setup.cfg"
+        # isort-options: "-w 100"
 
   macos_check:
     name: Build on macOS
