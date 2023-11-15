@@ -1,0 +1,3 @@
+icecream
+numpy
+scipy
