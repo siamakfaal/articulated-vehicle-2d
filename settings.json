@@ -1,0 +1,6 @@
+{
+    "simulation": {
+        "time_step": 0.01,
+        "default_run_time": [0, 60]
+    }
+}
