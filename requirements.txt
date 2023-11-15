@@ -2,6 +2,3 @@ numpy
 scipy
 matplotlib
 icecream
-types-numpy
-types-scipy
-types-matplotlib
