@@ -22,6 +22,7 @@ jobs:
     - name: Python Linter # see: https://github.com/marketplace/actions/python-linter
       uses: sunnysid3up/python-linter@master
       with:
+        mypy-options: "--ignore-missing-imports --show-error-codes"
         pylint-options: "--rcfile=setup.cfg"
         isort-options: "-w 100"
 
