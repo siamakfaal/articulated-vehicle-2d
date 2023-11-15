@@ -1,0 +1,25 @@
+name: ci
+
+on: [push]
+
+jobs:
+
+  ubuntu_check:
+    name: Build on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+    - run: date 
+
+  macos_check:
+    name: Build on macOS
+    needs: [ubuntu_check]
+    runs-on: macos-latest
+    steps:
+    - run: date
+
+  windows_check:
+    name: Build on Windows
+    needs: [ubuntu_check]
+    runs-on: windows-latest
+    steps:
+    - run: date
