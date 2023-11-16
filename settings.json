@@ -1,4 +1,11 @@
 {
+    "vehicle_geometry": {
+        "front_axle_to_pin": 1.736,
+        "rear_axle_to_pin": 1.798,
+        "tread_width": 2.622,
+        "wheel_width": 0.776,
+        "wheel_radius": 0.843
+    },
     "simulation": {
         "time_step": 0.01,
         "default_run_time": [0, 60]

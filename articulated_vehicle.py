@@ -1,3 +1,4 @@
+import json
 from icecream import ic
 from matplotlib.animation import FuncAnimation
 import matplotlib.patches as patches
@@ -5,13 +6,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class Parameters:
-    DEFAULT_FRONT_AXLE_CENTER_TO_PIN = 1.736  # meters
-    DEFAULT_REAR_AXLE_CENTER_TO_PIN = 1.798  # meters
-    DEFAULT_TREAD_WIDTH = 2.622  # meters
-    DEFAULT_WHEEL_WIDTH = 0.776  # meters
-    DEFAULT_WHEEL_RADIUS = 0.843  # meters
+# Load configuration settings from JSON
+with open("settings.json", "r") as config_file:
+    config = json.load(config_file)
+DEFAULT_FRONT_AXLE_CENTER_TO_PIN = config["vehicle_geometry"]["front_axle_to_pin"]
+DEFAULT_REAR_AXLE_CENTER_TO_PIN = config["vehicle_geometry"]["rear_axle_to_pin"]
+DEFAULT_TREAD_WIDTH = config["vehicle_geometry"]["tread_width"]
+DEFAULT_WHEEL_WIDTH = config["vehicle_geometry"]["wheel_width"]
+DEFAULT_WHEEL_RADIUS = config["vehicle_geometry"]["wheel_radius"]
 
+
+class Parameters:
     def __init__(
         self,
         front_axle_center_to_pin: float = DEFAULT_FRONT_AXLE_CENTER_TO_PIN,
