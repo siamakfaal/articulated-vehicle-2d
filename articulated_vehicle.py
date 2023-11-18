@@ -1,4 +1,6 @@
 import json
+import logging
+from typing import Dict
 from icecream import ic
 from matplotlib.animation import FuncAnimation
 import matplotlib.patches as patches
@@ -147,11 +149,15 @@ class Visual:
             self._ax = axis
 
         self._build_ready = False
-        self._patch_handles = {}
+        self._patch_handles: Dict[str, patches.Polygon] = {}
         self._prms = params
-        self._vertex = {}
+        self._vertex: Dict[str, np.ndarray] = {}
 
-    def animate(self, solution: Variables = None):
+    def animate(self, solution: Variables):
+        if not solution:
+            logging.warning("No solution provided to animate.")
+            return
+
         if not self._build_ready:
             self._build()
 
@@ -181,7 +187,7 @@ class Visual:
         self._build_ready = True
 
     def _build_patches(self):
-        self._patch_handles = {}
+        self._patch_handles = Dict[str, patches.Polygon] = {}
         for key in self._vertex.keys():
             self._patch_handles[key] = patches.Polygon(self._vertex[key], closed=True)
             self._ax.add_patch(self._patch_handles[key])
