@@ -1,6 +1,7 @@
-from typing import Callable, List
 import json
 import logging
+from typing import Callable, List
+
 import numpy as np
 from scipy.integrate import solve_ivp
 

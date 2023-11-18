@@ -1,8 +1,8 @@
 from icecream import ic
 import numpy as np
 
-from simulator import Simulator
 import articulated_vehicle as av
+from simulator import Simulator
 
 
 def controller(t, x):
