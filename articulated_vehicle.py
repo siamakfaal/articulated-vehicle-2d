@@ -83,7 +83,7 @@ class Variables:
         return instance
 
 
-class Kinematics:
+class Vehicle:
     def __init__(self, params: Parameters = Parameters()):
         self._prms = params
         self.initial_conditions()
@@ -118,19 +118,15 @@ class Kinematics:
 
         return np.array([diff_p1, diff_p2, diff_theta_p, diff_phi])
 
-    def _rotation(theta: float):
-        return np.array(
-            [[np.cos(theta), np.sin(theta)], [-np.sin(theta), np.cos(theta)]]
-        )
 
-    def get_transforms(instance: Variables):
-        p_T_w = lambda points: instance.p + np.matmul(
-            points, Kinematics._rotation(instance.theta_p)
-        )
-        q_T_w = lambda points: instance.q + np.matmul(
-            points, Kinematics._rotation(instance.theta_q)
-        )
-        return p_T_w, q_T_w
+def rotation(theta: float):
+    return np.array([[np.cos(theta), np.sin(theta)], [-np.sin(theta), np.cos(theta)]])
+
+
+def get_transforms(instance: Variables):
+    p_T_w = lambda points: instance.p + np.matmul(points, rotation(instance.theta_p))
+    q_T_w = lambda points: instance.q + np.matmul(points, rotation(instance.theta_q))
+    return p_T_w, q_T_w
 
 
 class Visual:
@@ -170,7 +166,7 @@ class Visual:
         plt.show()
 
     def _update(self, frame_number, solution):
-        p_T_w, q_T_w = Kinematics.get_transforms(solution.get_instance(frame_number))
+        p_T_w, q_T_w = get_transforms(solution.get_instance(frame_number))
         for key in self._vertex.keys():
             if "front" in key:
                 self._patch_handles[key].set_xy(p_T_w(self._vertex[key]))

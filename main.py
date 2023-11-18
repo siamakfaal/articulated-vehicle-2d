@@ -18,7 +18,7 @@ def controller(t, x):
 
 
 if __name__ == "__main__":
-    vehicle = av.Kinematics()
+    vehicle = av.Vehicle()
 
     sim = Simulator(vehicle)
     sim.solve([0, 5], controller)
