@@ -4,7 +4,6 @@ import logging
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import numpy as np
-from icecream import ic
 from matplotlib.animation import FuncAnimation
 from typing import Dict
 

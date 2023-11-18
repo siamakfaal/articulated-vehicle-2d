@@ -5,7 +5,6 @@ from typing import Callable, List
 import numpy as np
 from scipy.integrate import solve_ivp
 
-
 # Load configuration settings from JSON
 with open("settings.json", "r") as config_file:
     config = json.load(config_file)
