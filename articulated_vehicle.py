@@ -1,11 +1,11 @@
 import json
 import logging
+from typing import Dict
 
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
-from typing import Dict
 
 # Load configuration settings from JSON
 with open("settings.json", "r") as config_file:
