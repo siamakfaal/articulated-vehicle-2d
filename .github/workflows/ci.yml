@@ -24,7 +24,7 @@ jobs:
       uses: sunnysid3up/python-linter@master
       with:
         mypy-options: "--ignore-missing-imports --show-error-codes"
-        pylint-options: "--rcfile=configs/.pylintrc --recursive=true"
+        pylint-options: "--rcfile=configs/.pylintrc"
         # isort-options: "-w 100"
 
   macos_check:
