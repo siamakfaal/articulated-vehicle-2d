@@ -1,2 +1,11 @@
 # articulated-vehicle-2d
-Kinematic simulation of an articulated vehicle model in 2D using Python 
+Kinematic simulation of an articulated vehicle model in 2D using Python
+
+
+## Dependencies
+
+
+## Code Style
+
+### Import Sorting
+isort

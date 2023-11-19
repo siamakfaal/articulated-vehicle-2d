@@ -186,7 +186,7 @@ class Visual:
         self._build_ready = True
 
     def _build_patches(self):
-        self._patch_handles = Dict[str, patches.Polygon] = {}
+        self._patch_handles: Dict[str, patches.Polygon] = {}
         for key in self._vertex.keys():
             self._patch_handles[key] = patches.Polygon(self._vertex[key], closed=True)
             self._ax.add_patch(self._patch_handles[key])
