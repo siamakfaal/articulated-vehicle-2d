@@ -1,3 +1,5 @@
+"""This module provides a Simulator class for vehicle kinematics simulation."""
+
 import json
 import logging
 from typing import Callable, List
@@ -6,7 +8,7 @@ import numpy as np
 from scipy.integrate import solve_ivp
 
 # Load configuration settings from JSON
-with open("settings.json", "r") as config_file:
+with open("settings.json", "r", encoding="utf-8") as config_file:
     config = json.load(config_file)
 SIMULATION_TIME_STEP = config["simulation"]["time_step"]
 DEFAULT_SIM_TIME = config["simulation"]["default_run_time"]
@@ -56,7 +58,7 @@ class Simulator:
             self.solution = solve_ivp(
                 fun=dynamics,
                 t_span=[tspan[0], tspan[-1]],
-                y0=self._vehicle.x0,
+                y0=self._vehicle.initial_condition(),
                 t_eval=t_eval,
             )
 
@@ -71,5 +73,5 @@ class Simulator:
             return self.solution
 
         except Exception as e:
-            logging.error("Error in simulation: {}".format(e))
+            logging.error("Error in simulation: %s", e)
             raise

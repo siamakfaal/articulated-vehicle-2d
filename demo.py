@@ -1,8 +1,18 @@
+"""
+This example demonstrates the use of the Simulator class for vehicle kinematics simulation.
+It defines a controller function, creates a vehicle instance, and then uses the Simulator
+to solve the vehicle's motion over a specified time span. The results are then decomposed,
+visualized, and animated using the vehicle's visualization utilities.
+"""
+
 import numpy as np
-from icecream import ic
+
+# from icecream import ic
 
 import vehicle.articulated_vehicle as av
 from simulator.simulator import Simulator
+from visualization.animation import Animate
+import matplotlib.pyplot as plt
 
 
 def controller(t, x):
@@ -23,11 +33,15 @@ if __name__ == "__main__":
     sim = Simulator(vehicle)
     sim.solve([0, 5], controller)
 
-    solution = av.Variables()
-    solution.decompose(sim.solution)
+    # vehicle.plot(sim.solution)
 
-    vis = av.Visual()
+    fig, ax = plt.subplots()
+    ax.set_xlim(-10, 10)
+    ax.set_ylim(-10, 10)
+    ax.set_aspect("equal", "box")
 
-    vis.animate(solution)
+    vehicle.draw(ax)
 
-    vis.plot(solution)
+    animator = Animate(ax)
+
+    animator.animate(sim.solution.t, vehicle.update_function(sim.solution))
