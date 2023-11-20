@@ -1,12 +1,13 @@
+"""Module for handling kinematics and visualization of an articulated vehicle."""
+
 import json
 import logging
 from dataclasses import dataclass
 from typing import Dict
 
-import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.animation import FuncAnimation
+from matplotlib import patches
 
 
 class VehicleGeometry:
@@ -229,6 +230,7 @@ class VehicleKinematicVariables:
             phi=existing_solution.phi[index],
         )
 
+    @staticmethod
     def _compute_dependent_variables(
         p: np.ndarray,
         theta_p: np.ndarray,
@@ -259,6 +261,7 @@ class Vehicle:
 
         # Visualizations
         self._patch_handles = {}
+        self._vertex = {}
 
     def set_initial_condition(
         self,
@@ -333,7 +336,7 @@ class Vehicle:
             "rear_left_wheel": rear_left_wheel,
             "rear_right_wheel": rear_right_wheel,
         }
-        for key in self._vertex.keys():
+        for key in self._vertex:
             self._patch_handles[key] = patches.Polygon(self._vertex[key], closed=True)
             axis.add_patch(self._patch_handles[key])
 

@@ -5,14 +5,15 @@ to solve the vehicle's motion over a specified time span. The results are then d
 visualized, and animated using the vehicle's visualization utilities.
 """
 
+import matplotlib.pyplot as plt
 import numpy as np
-
-# from icecream import ic
 
 import vehicle.articulated_vehicle as av
 from simulator.simulator import Simulator
 from visualization.animation import Animate
-import matplotlib.pyplot as plt
+
+# from icecream import ic
+
 
 
 def controller(t, x):
