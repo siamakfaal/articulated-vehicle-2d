@@ -15,7 +15,6 @@ from visualization.animation import Animate
 # from icecream import ic
 
 
-
 def controller(t, x):
     """Control function
     Args:
