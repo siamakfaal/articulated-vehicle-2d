@@ -83,7 +83,7 @@ class Animate:
             self._wrapper_update,
             frames=len(time),
             fargs=update_functions,
-            blit=True,
+            blit=False,
             repeat=False,
         )
         plt.show()

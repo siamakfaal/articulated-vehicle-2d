@@ -1,4 +1,6 @@
-numpy
-scipy
-matplotlib
+black
 icecream
+matplotlib
+numpy
+pylint
+scipy
